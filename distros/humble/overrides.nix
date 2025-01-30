@@ -185,6 +185,12 @@ in with lib; {
     ];
   });
 
+  usb-cam = rosSuper.usb-cam.overrideAttrs ({
+    nativeBuildInputs ? [], ...
+  }: {
+    nativeBuildInputs = nativeBuildInputs ++ [ self.pkgs.pkg-config ];
+  });
+
   vrpn = rosSuper.vrpn.overrideAttrs ({
     patches ? [], ...
   }: {
